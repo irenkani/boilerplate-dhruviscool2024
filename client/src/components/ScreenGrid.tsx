@@ -8,16 +8,21 @@ import { AnyChildren } from '../util/types/generic';
  * @param children The {@link AnyChildren} representing the components of the screen.
  * @returns
  */
+
+
 function ScreenGrid({ children }: AnyChildren) {
   return (
     <Grid
       container
-      xs={12}
-      height="100vh"
+      // xs={12}
+      // height="100vh"
+      // width="100vw"
+      // style={{ height: '100vh', width: '100vw' }}
       justifyContent="center"
-      alignItems="center"
-      flexDirection="column"
-    >
+        alignItems="center"
+        flexDirection="column"
+        backgroundColor="red"
+  >
       {children}
     </Grid>
   );
