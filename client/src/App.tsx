@@ -23,6 +23,10 @@ import ResetPasswordPage from './Authentication/ResetPasswordPage';
 import AlertPopup from './components/AlertPopup';
 import InviteRegisterPage from './Authentication/InviteRegisterPage';
 
+import Page1 from './Home/Page1';
+import Page2 from './Home/Page2';
+import Page3 from './Home/Page3';
+
 function App() {
   return (
     <div className="App">
@@ -36,6 +40,9 @@ function App() {
                   {/* Routes accessed only if user is not authenticated */}
                   <Route element={<UnauthenticatedRoutesWrapper />}>
                     <Route path="/home" element={<HomePage />} />
+                    <Route path="/page1" element={<Page1 />} />
+                    <Route path="/page2" element={<Page2 />} />
+                    <Route path="/page3" element={<Page3 />} />
                     <Route path="/login" element={<LoginPage />} />
                     <Route path="/register" element={<RegisterPage />} />
                     <Route

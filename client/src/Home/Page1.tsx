@@ -109,7 +109,7 @@ const Footer = styled.footer`
   padding: 0.25rem;
 `;
 
-function HomePage() {
+function Page1() {
   const user = useAppSelector(selectUser);
   const dispatch = useAppDispatch();
   const navigator = useNavigate();
@@ -122,16 +122,6 @@ function HomePage() {
     }
   };
 
-  const handlePage1 = async () => {
-    navigator('/page1', {replace: true});
-  }
-  const handlePage2 = async () => {
-    navigator('/page2', {replace: true});
-  }
-  const handlePage3 = async () => {
-    navigator('/page3', {replace: true});
-  }
-
   const handleAddTrait = async () => {
     const newAdminStatus = await selfUpgrade(user.email as string);
     if (newAdminStatus) {
@@ -140,7 +130,7 @@ function HomePage() {
     }
   };
 
-  const message = `Choose your`;
+  const message = `Page 1`;
   
   return (
     <>
@@ -162,20 +152,6 @@ function HomePage() {
         </Grid>
         <Grid item container justifyContent="center" alignItems="center" flexDirection="column" padding={1}>
           <Typography fontFamily="Press Start 2P" alignContent="flex-start" fontSize={80}>{message}</Typography>
-          <Box component="img" src={"https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/640px-International_Pok%C3%A9mon_logo.svg.png"} alt={"Pokemon logo"} sx={{ height: "100px", width: "auto" }} /> 
-        </Grid>
-        <Grid item container justifyContent="space-around" paddingTop={10} paddingBottom={0}>
-          {/*Ditto*/}
-          <Box component="img" src={"https://archives.bulbagarden.net/media/upload/thumb/2/25/0132Ditto.png/250px-0132Ditto.png"} alt={"Ditto"} sx={{ height: "200px", width: "auto" }} /> 
-          {/*Slowpoke*/}
-          <Box component="img" src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full//079.png"} alt={"Slowpoke"} sx={{ height: "200px", width: "auto" }} /> 
-          {/*Togepi*/}
-          <Box component="img" src={"https://assets.pokemon.com/assets/cms2/img/pokedex/full//175.png"} alt={"Togepi"} sx={{ height: "200px", width: "auto" }} /> 
-        </Grid>
-        <Grid item container justifyContent="space-around">
-          <Button onClick={handlePage1}>Page 1</Button>
-          <Button onClick={handlePage2}>Page 2</Button>
-          <Button onClick={handlePage3}>Page 3</Button>
         </Grid>
         {/* <Grid item>
           <Typography variant="h2">Welcome to the Admin Dashboard</Typography>
@@ -189,4 +165,4 @@ function HomePage() {
   
 }
 
-export default HomePage;
+export default Page1;
