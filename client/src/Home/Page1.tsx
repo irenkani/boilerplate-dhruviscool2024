@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-//import Button from '@mui/material/Button';
+// import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { Typography, Grid } from '@mui/material';
+import styled, { createGlobalStyle } from 'styled-components';
 import { useAppDispatch, useAppSelector } from '../util/redux/hooks';
 import {
   logout as logoutAction,
@@ -11,9 +12,6 @@ import {
 } from '../util/redux/userSlice';
 import { logout as logoutApi, selfUpgrade } from './api';
 import ScreenGrid from '../components/ScreenGrid';
-import styled from 'styled-components';
-import { createGlobalStyle } from 'styled-components';
-
 
 interface PromoteButtonProps {
   admin: boolean | null;
@@ -38,10 +36,10 @@ const GridExample = styled.div`
   color: white;
   grid-template-rows: 0.2fr 1fr 0.5fr 0.5fr;
   grid-template-areas:
-    "nav nav nav nav"
-    "sidebar main main main"
-    "sidebar content content content"
-    "sidebar footer footer footer";
+    'nav nav nav nav'
+    'sidebar main main main'
+    'sidebar content content content'
+    'sidebar footer footer footer';
   text-align: center;
   grid-gap: 0.25rem;
 `;
@@ -54,21 +52,20 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
   }
-`
+`;
 
 const Button = styled.button`
-  background: #80414F;
+  background: #80414f;
   border-radius: 5px;
-  border: 2px solid #BF4F74;
-  color: #FFFFFF;
+  border: 2px solid #bf4f74;
+  color: #ffffff;
   margin: 0 1em;
   padding: 0.25em 1em;
   height: 5em;
   width: 15em;
   font-size: 1em;
-  font-family: "Press Start 2P", system-ui;
-  
-`
+  font-family: 'Press Start 2P', system-ui;
+`;
 
 const NavBar = styled.nav`
   background: #3a3a55;
@@ -131,11 +128,10 @@ function Page1() {
   };
 
   const message = `Page 1`;
-  
+
   return (
-    <>
-      <ScreenGrid>
-        {/* <GridExample>
+    <ScreenGrid>
+      {/* <GridExample>
           <NavBar>NavBar</NavBar>
           <Main>Main</Main>
           <SideBar>SideBar</SideBar>
@@ -146,23 +142,39 @@ function Page1() {
           </ContentBox>
           <Footer>Footer</Footer>
         </GridExample>  */}
-        <Grid item container justifyContent="flex-end" alignItems="flex-start" padding={5}>
-          <Button>Add Toxic Person</Button>
-          <Button onClick={handleLogout}>Logout</Button>
-        </Grid>
-        <Grid item container justifyContent="center" alignItems="center" flexDirection="column" padding={1}>
-          <Typography fontFamily="Press Start 2P" alignContent="flex-start" fontSize={80}>{message}</Typography>
-        </Grid>
-        {/* <Grid item>
+      <Grid
+        item
+        container
+        justifyContent="flex-end"
+        alignItems="flex-start"
+        padding={5}
+      >
+        <Button>Add Toxic Person</Button>
+        <Button onClick={handleLogout}>Logout</Button>
+      </Grid>
+      <Grid
+        item
+        container
+        justifyContent="center"
+        alignItems="center"
+        flexDirection="column"
+        padding={1}
+      >
+        <Typography
+          fontFamily="Press Start 2P"
+          alignContent="flex-start"
+          fontSize={80}
+        >
+          {message}
+        </Typography>
+      </Grid>
+      {/* <Grid item>
           <Typography variant="h2">Welcome to the Admin Dashboard</Typography>
         </Grid> */}
-        {/* <Grid item container justifyContent="center">
+      {/* <Grid item container justifyContent="center">
         </Grid> */}
-      </ScreenGrid>
-    </>
+    </ScreenGrid>
   );
-
-  
 }
 
 export default Page1;

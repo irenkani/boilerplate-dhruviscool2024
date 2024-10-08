@@ -191,21 +191,21 @@ function HomePage() {
         paddingTop={10}
         paddingBottom={0}
       >
-        {/*Ditto*/}
+        {/* Ditto */}
         <Box
           component="img"
           src="https://archives.bulbagarden.net/media/upload/thumb/2/25/0132Ditto.png/250px-0132Ditto.png"
           alt="Ditto"
           sx={{ height: '200px', width: 'auto' }}
         />
-        {/*Slowpoke*/}
+        {/* Slowpoke */}
         <Box
           component="img"
           src="https://assets.pokemon.com/assets/cms2/img/pokedex/full//079.png"
           alt="Slowpoke"
           sx={{ height: '200px', width: 'auto' }}
         />
-        {/*Togepi*/}
+        {/* Togepi */}
         <Box
           component="img"
           src="https://assets.pokemon.com/assets/cms2/img/pokedex/full//175.png"
