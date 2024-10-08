@@ -35,7 +35,7 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.2.2",
     "styled": "^1.0.0",
-    "styled-components": "^5.3.3"
+    "styled-components": "^6.1.13"
   },
   "devDependencies": {
     "@types/babel__core": "^7.1.19",
