@@ -27,11 +27,12 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: [
+      "'Press Start 2P'",
       'HK Grotesk',
+      'Roboto',
       '-apple-system',
       'BlinkMacSystemFont',
       'Segoe UI',
-      'Roboto',
       'Oxygen',
       'Ubuntu',
       'Cantarell',
@@ -49,7 +50,10 @@ const theme = createTheme({
           lineHeight: '1.5',
         },
         h1: {
+          fontFamily: "'Press Start 2P'",
           fontWeight: 'bold !important',
+          color: '#000',
+          fontSize: '80px !important',
         },
         h2: {
           fontSize: '38px !important',

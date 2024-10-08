@@ -160,11 +160,7 @@ function Page1() {
         flexDirection="column"
         padding={1}
       >
-        <Typography
-          fontFamily="Press Start 2P"
-          alignContent="flex-start"
-          fontSize={80}
-        >
+        <Typography variant="h1" alignContent="flex-start">
           {message}
         </Typography>
       </Grid>

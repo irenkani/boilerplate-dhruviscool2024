@@ -1,5 +1,6 @@
 import React from 'react';
 import { Grid } from '@mui/material';
+import { createTheme } from '@mui/material/styles';
 import { AnyChildren } from '../util/types/generic';
 
 /**
@@ -9,6 +10,20 @@ import { AnyChildren } from '../util/types/generic';
  * @returns
  */
 
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#c40e0e',
+      contrastText: '#fff',
+    },
+    secondary: {
+      light: '#ff7961',
+      main: '#f44336',
+      dark: '#ba000d',
+      contrastText: '#000',
+    },
+  },
+});
 
 function ScreenGrid({ children }: AnyChildren) {
   return (
@@ -19,10 +34,12 @@ function ScreenGrid({ children }: AnyChildren) {
       // width="100vw"
       // style={{ height: '100vh', width: '100vw' }}
       justifyContent="center"
-        alignItems="center"
-        flexDirection="column"
-        backgroundColor="red"
-  >
+      alignItems="center"
+      flexDirection="column"
+      sx={{
+        backgroundColor: '#c40e0e',
+      }}
+    >
       {children}
     </Grid>
   );
