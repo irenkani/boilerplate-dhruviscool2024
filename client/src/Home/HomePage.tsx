@@ -2,8 +2,9 @@ import React, { useState } from 'react';
 // import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
-import { Typography, Grid } from '@mui/material';
+import { Typography, Grid, Paper } from '@mui/material';
 import styled, { createGlobalStyle } from 'styled-components';
+import Card from '@mui/material/Card';
 import { useAppDispatch, useAppSelector } from '../util/redux/hooks';
 import {
   logout as logoutAction,
@@ -13,6 +14,7 @@ import {
 import { logout as logoutApi, selfUpgrade } from './api';
 import ScreenGrid from '../components/ScreenGrid';
 import '../index.css';
+import COLORS from '../assets/colors';
 
 interface PromoteButtonProps {
   admin: boolean | null;
@@ -31,9 +33,9 @@ interface PromoteButtonProps {
  */
 
 const Button = styled.button`
-  background: #80414f;
+  background: #4c9cc4;
   border-radius: 5px;
-  border: 2px solid #bf4f74;
+  border: 2px solid #335e9a;
   color: #ffffff;
   margin: 0 1em;
   padding: 0.25em 1em;
@@ -41,6 +43,10 @@ const Button = styled.button`
   width: 12em;
   font-size: 1em;
   font-family: 'Press Start 2P', system-ui;
+  text-shadow: 3px, 2px, 1px, #d6d6d6;
+  &:hover {
+    background-color: #51648f;
+  }
 `;
 
 const Footer = styled.footer`
@@ -80,7 +86,7 @@ function HomePage() {
     }
   };
 
-  const message = `Choose your`;
+  const message = `CHOOSE YOUR`;
 
   return (
     <ScreenGrid>
@@ -89,10 +95,11 @@ function HomePage() {
         container
         justifyContent="flex-end"
         alignItems="flex-start"
-        padding={5}
+        padding={3}
+        style={{ backgroundColor: COLORS.pokemonNavy }}
       >
-        <Button>Add Toxic Person</Button>
-        <Button onClick={handleLogout}>Logout</Button>
+        <Button>ADD TOXIC PERSON</Button>
+        <Button onClick={handleLogout}>LOGOUT</Button>
       </Grid>
       <Grid
         item
@@ -100,16 +107,16 @@ function HomePage() {
         justifyContent="center"
         alignItems="center"
         flexDirection="column"
-        padding={1}
+        paddingTop={10}
       >
-        <Typography variant="h1" alignContent="flex-start">
+        <Typography variant="h1" alignContent="flex-start" paddingBottom={3}>
           {message}
         </Typography>
         <Box
           component="img"
           src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/98/International_Pok%C3%A9mon_logo.svg/640px-International_Pok%C3%A9mon_logo.svg.png"
           alt="Pokemon logo"
-          sx={{ height: '100px', width: 'auto' }}
+          sx={{ height: '150px', width: 'auto' }}
         />
       </Grid>
       <Grid
@@ -141,17 +148,11 @@ function HomePage() {
           sx={{ height: '200px', width: 'auto' }}
         />
       </Grid>
-      <Grid item container justifyContent="space-around">
-        <Button onClick={handlePage1}>Page 1</Button>
-        <Button onClick={handlePage2}>Page 2</Button>
-        <Button onClick={handlePage3}>Page 3</Button>
+      <Grid item container justifyContent="space-around" paddingBottom={10}>
+        <Button onClick={handlePage1}>PAGE 1</Button>
+        <Button onClick={handlePage2}>PAGE 2</Button>
+        <Button onClick={handlePage3}>PAGE 3</Button>
       </Grid>
-      {/* <Grid item>
-          <Typography variant="h2">Welcome to the Admin Dashboard</Typography>
-        </Grid> */}
-      {/* <Grid item container justifyContent="center">
-        </Grid> */}
-      {/* add a footer */}
     </ScreenGrid>
   );
 }

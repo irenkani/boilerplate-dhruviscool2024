@@ -16,7 +16,9 @@ const COLORS = {
   neutral: '#8c8c8c', // Gray
   lightGray: '#ebeff2', // Gray-subsection
   actionBlue: '#155da1', // Action button
-
-  // Other colors:
+  pokemonBlue: '#335e9a',
+  pokemonYellow: '#ebc316',
+  pokemonRed: '#df1818',
+  pokemonNavy: '#142960',
 };
 export default COLORS;

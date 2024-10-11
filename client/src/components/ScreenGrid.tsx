@@ -29,15 +29,11 @@ function ScreenGrid({ children }: AnyChildren) {
   return (
     <Grid
       container
-      // xs={12}
-      // height="100vh"
-      // width="100vw"
-      // style={{ height: '100vh', width: '100vw' }}
       justifyContent="center"
       alignItems="center"
       flexDirection="column"
       sx={{
-        backgroundColor: '#c40e0e',
+        background: 'radial-gradient(#affaec, #e4fcd7, #fcfcca)',
       }}
     >
       {children}

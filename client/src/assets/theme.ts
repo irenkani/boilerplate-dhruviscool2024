@@ -52,8 +52,9 @@ const theme = createTheme({
         h1: {
           fontFamily: "'Press Start 2P'",
           fontWeight: 'bold !important',
-          color: '#000',
-          fontSize: '80px !important',
+          color: COLORS.pokemonNavy,
+          fontSize: '50px !important',
+          textShadow: '1px 2px 1px #000000',
         },
         h2: {
           fontSize: '38px !important',
