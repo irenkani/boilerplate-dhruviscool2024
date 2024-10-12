@@ -96,10 +96,10 @@ function HomePage() {
         justifyContent="flex-end"
         alignItems="flex-start"
         padding={3}
-        style={{ backgroundColor: COLORS.pokemonNavy }}
+        // style={{ backgroundColor: COLORS.pokemonNavy }}
       >
         <Button>ADD TOXIC PERSON</Button>
-        <Button onClick={handleLogout}>LOGOUT</Button>
+        {/* <Button onClick={handleLogout}>LOGOUT</Button> */}
       </Grid>
       <Grid
         item
@@ -107,7 +107,7 @@ function HomePage() {
         justifyContent="center"
         alignItems="center"
         flexDirection="column"
-        paddingTop={10}
+        paddingTop={5}
       >
         <Typography variant="h1" alignContent="flex-start" paddingBottom={3}>
           {message}
@@ -119,7 +119,7 @@ function HomePage() {
           sx={{ height: '150px', width: 'auto' }}
         />
       </Grid>
-      <Grid item container justifyContent="space-around" padding  ={10}>
+      <Grid item container justifyContent="space-around" padding={10} paddingBottom={20}>
         <Button
           onClick={handlePage1}
           style={{
