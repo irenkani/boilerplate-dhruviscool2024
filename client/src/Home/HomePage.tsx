@@ -58,6 +58,12 @@ const Button = styled.button`
 //   padding: 5; 
 //   ':hover': {boxShadow: 20, };
 //   margin: 5;
+// const card = Card`
+//   maxWidth: 400;
+//   backgroundColor: "transparent"; 
+//   padding: 5; 
+//   ':hover': {boxShadow: 20, };
+//   margin: 5;
             
 // `;
 
@@ -123,7 +129,7 @@ const message = `CHOOSE YOUR`;
         justifyContent="center"
         alignItems="center"
         flexDirection="column"
-        paddingTop={5}
+        paddingTop={10}
       >
         <Typography variant="h1" alignContent="flex-start" paddingBottom={3}>
           {message}
@@ -149,7 +155,16 @@ const message = `CHOOSE YOUR`;
               image="https://archives.bulbagarden.net/media/upload/thumb/2/25/0132Ditto.png/250px-0132Ditto.png"
             />
           <CardContent>
-            <Typography variant="h5" component="div" align='center' padding={0} paddingTop={1}> WILLARD </Typography>
+            <Typography
+              variant="h5"
+              component="div"
+              align="center"
+              padding={0}
+              paddingTop={1}
+            >
+              {' '}
+              WILLARD{' '}
+            </Typography>
           </CardContent>
         </Card>
         <Card 
@@ -164,7 +179,16 @@ const message = `CHOOSE YOUR`;
               image="https://assets.pokemon.com/assets/cms2/img/pokedex/full//079.png"
             />
           <CardContent>
-            <Typography variant="h5" component="div" align='center' padding={0} paddingTop={1}> RACHEL </Typography>
+            <Typography
+              variant="h5"
+              component="div"
+              align="center"
+              padding={0}
+              paddingTop={1}
+            >
+              {' '}
+              RACHEL{' '}
+            </Typography>
           </CardContent>
         </Card>
         <Card 
@@ -179,7 +203,16 @@ const message = `CHOOSE YOUR`;
               image="https://assets.pokemon.com/assets/cms2/img/pokedex/full//175.png"
             />
           <CardContent>
-            <Typography variant="h5" component="div" align='center' padding={0} paddingTop={1}> IRENKA </Typography>
+            <Typography
+              variant="h5"
+              component="div"
+              align="center"
+              padding={0}
+              paddingTop={1}
+            >
+              {' '}
+              IRENKA{' '}
+            </Typography>
           </CardContent>
         </Card>
       </Grid>
