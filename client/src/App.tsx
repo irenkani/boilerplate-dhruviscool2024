@@ -27,6 +27,8 @@ import Page1 from './Home/Page1';
 import Page2 from './Home/Page2';
 import Page3 from './Home/Page3';
 
+import AddToxic from './Home/AddToxic';
+
 function App() {
   return (
     <div className="App">
@@ -43,6 +45,7 @@ function App() {
                     <Route path="/page1" element={<Page1 />} />
                     <Route path="/page2" element={<Page2 />} />
                     <Route path="/page3" element={<Page3 />} />
+                    <Route path="/addtoxic" element={<AddToxic />} />
                     <Route path="/login" element={<LoginPage />} />
                     <Route path="/register" element={<RegisterPage />} />
                     <Route

@@ -83,7 +83,6 @@ const SideBar = styled.div`
   grid-area: sidebar;
   padding: 0.25rem;
 `;
-
 const ContentBox = styled.div`
   display: flex;
   gap: 0.25rem;
