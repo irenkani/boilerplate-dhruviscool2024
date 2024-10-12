@@ -120,9 +120,36 @@ function HomePage() {
         />
       </Grid>
       <Grid item container justifyContent="space-around" padding  ={10}>
-        <Button onClick={handlePage1} style = {{borderColor: 'transparent', backgroundColor: 'transparent', backgroundImage:"url('https://archives.bulbagarden.net/media/upload/thumb/2/25/0132Ditto.png/250px-0132Ditto.png')",backgroundSize:"cover",width:"250px", height:"250px"}}></Button>
-        <Button onClick={handlePage2} style = {{borderColor: 'transparent', backgroundColor: 'transparent', backgroundImage:"url('https://assets.pokemon.com/assets/cms2/img/pokedex/full//079.png')",backgroundSize:"cover", width:"250px", height:"250px"}}></Button>
-        <Button onClick={handlePage3} style = {{borderColor: 'transparent', backgroundColor: 'transparent', backgroundImage:"url('https://assets.pokemon.com/assets/cms2/img/pokedex/full//175.png')",backgroundSize:"cover", width:"250px", height:"250px"}}></Button>
+        <Button
+          onClick={handlePage1}
+          style={{
+            borderColor: 'transparent', backgroundColor: 'transparent', backgroundImage:
+              "url('https://archives.bulbagarden.net/media/upload/thumb/2/25/0132Ditto.png/250px-0132Ditto.png')",
+            backgroundSize: 'cover',
+            width: '250px',
+            height: '250px',
+          }}
+        />
+        <Button
+          onClick={handlePage2}
+          style={{
+            borderColor: 'transparent', backgroundColor: 'transparent', backgroundImage:
+              "url('https://assets.pokemon.com/assets/cms2/img/pokedex/full//079.png')",
+            backgroundSize: 'cover',
+            width: '250px',
+            height: '250px',
+          }}
+        />
+        <Button
+          onClick={handlePage3}
+          style={{
+            borderColor: 'transparent', backgroundColor: 'transparent', backgroundImage:
+              "url('https://assets.pokemon.com/assets/cms2/img/pokedex/full//175.png')",
+            backgroundSize: 'cover',
+            width: '250px',
+            height: '250px',
+          }}
+        />
       </Grid>
     </ScreenGrid>
   );
