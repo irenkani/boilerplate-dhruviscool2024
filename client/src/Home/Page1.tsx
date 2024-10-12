@@ -59,7 +59,7 @@ function Page1() {
   
 
   const handleHomePage = async () => {
-    navigator('/HomePage', { replace: true });
+    navigator('/home', { replace: true });
   };
 
 
@@ -107,26 +107,31 @@ function Page1() {
         item
         container
         justifyContent="center"
-        alignItems="center"
+        alignItems="flex-start"
         flexDirection="column"
-        paddingBottom={2}
-        paddingTop={0}
-      >
-        //insert image here
-      
-      </Grid>
-
-      <Grid
-        item
-        container
-        justifyContent="center"
-        alignItems="center"
-        flexDirection="column"
+        padding={20}
+        paddingLeft={30}
         paddingBottom={100}
         paddingTop={10}
       >
-        <Typography variant="h5" alignContent="flex-start">
-          "I need to think about it"
+        <Typography variant="h5" alignContent="center">
+          - Prefers to brush teeth in the communal sink
+        </Typography>
+
+        <Typography variant="h5" alignContent="center">
+          - Orders fried rice at a ramen shop
+        </Typography>
+
+        <Typography variant="h5" alignContent="center">
+          - Sleeps a variable of 3-14 hours
+        </Typography>
+
+        <Typography variant="h5" alignContent="center">
+          - Unable to cry
+        </Typography>
+
+        <Typography variant="h5" alignContent="center">
+          - "I need to think about this"
         </Typography>
       
       </Grid>

@@ -55,16 +55,21 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const Button = styled.button`
-  background: #80414f;
+  background: #4c9cc4;
   border-radius: 5px;
-  border: 2px solid #bf4f74;
+  border: 2px solid #335e9a;
   color: #ffffff;
-  margin: 0 1em;
-  padding: 0.25em 1em;
-  height: 5em;
-  width: 15em;
+  margin: 0.2 2em;
+  padding: 0.5em 1em;
+  height: 4.5em;
+  width: 12em;
   font-size: 1em;
+  line-height: 1.5em;
   font-family: 'Press Start 2P', system-ui;
+  text-shadow: 3px, 2px, 1px, #d6d6d6;
+  &:hover {
+    background-color: #51648f;
+  }
 `;
 
 const NavBar = styled.nav`
@@ -106,6 +111,8 @@ const Footer = styled.footer`
   padding: 0.25rem;
 `;
 
+
+
 function Page2() {
   const user = useAppSelector(selectUser);
   const dispatch = useAppDispatch();
@@ -129,50 +136,85 @@ function Page2() {
 
   const message = `Page 2`;
 
+  const handleHomePage = async () => {
+    navigator('/home', { replace: true });
+  };
+
+
   return (
     <ScreenGrid>
-      {/* <GridExample>
-          <NavBar>NavBar</NavBar>
-          <Main>Main</Main>
-          <SideBar>SideBar</SideBar>
-          <ContentBox>
-              <Content1>Content1</Content1>
-              <Content2>Content2</Content2>
-              <Content3>Content3</Content3>
-          </ContentBox>
-          <Footer>Footer</Footer>
-        </GridExample>  */}
       <Grid
         item
         container
         justifyContent="flex-end"
         alignItems="flex-start"
+        paddingTop={5}
+        paddingRight={5}
+        paddingBottom={2}
+      >
+        <Button onClick={handleHomePage}>BACK TO HOME</Button>
+      </Grid>
+      {/* <Grid
+        item
+        container
+        justifyContent="center"
+        alignItems="center"
+        flexDirection="column"
         padding={5}
       >
-        <Button>Add Toxic Person</Button>
-        <Button onClick={handleLogout}>Logout</Button>
-      </Grid>
+        <Typography variant="h1" alignContent="flex-start">
+          {message}
+        </Typography>
+      </Grid> */}
       <Grid
         item
         container
         justifyContent="center"
         alignItems="center"
         flexDirection="column"
-        padding={1}
+        paddingBottom={2}
+        paddingTop={0}
       >
-        <Typography
-          fontFamily="Press Start 2P"
-          alignContent="flex-start"
-          fontSize={80}
-        >
-          {message}
+        <Typography variant="h1" alignContent="flex-start">
+          RACHEL
         </Typography>
+      
       </Grid>
-      {/* <Grid item>
-          <Typography variant="h2">Welcome to the Admin Dashboard</Typography>
-        </Grid> */}
-      {/* <Grid item container justifyContent="center">
-        </Grid> */}
+
+
+      <Grid
+        item
+        container
+        justifyContent="center"
+        alignItems="flex-start"
+        flexDirection="column"
+        padding={20}
+        paddingLeft={30}
+        paddingBottom={100}
+        paddingTop={10}
+      >
+        <Typography variant="h5" alignContent="center">
+          - Drinks coffee black
+        </Typography>
+
+        <Typography variant="h5" alignContent="center">
+        - Has the attention span of a stereotypical goldfish
+        </Typography>
+
+        <Typography variant="h5" alignContent="center">
+        - Loves gloomy/cloudy weather
+        </Typography>
+
+        <Typography variant="h5" alignContent="center">
+        - Incapable of roasting marshmallows without setting them on fire
+        </Typography>
+
+        <Typography variant="h5" alignContent="center">
+        - Puts peanut butter on everything
+        </Typography>
+      
+      </Grid>
+        
     </ScreenGrid>
   );
 }

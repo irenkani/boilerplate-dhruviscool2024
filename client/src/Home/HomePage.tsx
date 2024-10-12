@@ -52,14 +52,14 @@ const Button = styled.button`
   }
 `;
 
-const card = Card`
-  maxWidth: 400;
-  backgroundColor: "transparent"; 
-  padding: 5; 
-  ':hover': {boxShadow: 20, };
-  margin: 5;
+// const card = Card`
+//   maxWidth: 400;
+//   backgroundColor: "transparent"; 
+//   padding: 5; 
+//   ':hover': {boxShadow: 20, };
+//   margin: 5;
             
-`;
+// `;
 
 const Footer = styled.footer`
   background: #ff9637;
@@ -90,6 +90,10 @@ function HomePage() {
     navigator('/page3', { replace: true });
   };
 
+  const handleAdd = async () => {
+    navigator('/addtoxic', { replace: true });
+  };
+
   const handleAddTrait = async () => {
     const newAdminStatus = await selfUpgrade(user.email as string);
     if (newAdminStatus) {
@@ -98,7 +102,7 @@ function HomePage() {
     }
   };
 
-  const message = `CHOOSE YOUR`;
+const message = `CHOOSE YOUR`;
 
   return (
     <ScreenGrid>
@@ -107,9 +111,11 @@ function HomePage() {
         container
         justifyContent="flex-end"
         alignItems="flex-start"
-        padding={3}
+        paddingTop={5}
+        paddingRight={5}
+        paddingBottom={0}
       >
-        <Button>ADD TOXIC PERSON</Button>
+        <Button onClick={handleAdd}>ADD TOXIC PERSON</Button>
       </Grid>
       <Grid
         item
@@ -129,7 +135,7 @@ function HomePage() {
           sx={{ height: '150px', width: 'auto' }}
         />
       </Grid>
-      <Grid item container justifyContent="center" alignContent="center" padding={10} paddingBottom={20} flexWrap="wrap">
+      <Grid item container justifyContent="center" alignContent="center" padding={6} paddingBottom={20} flexWrap="wrap">
         <Card 
             sx={{ maxWidth: 400, backgroundColor: "transparent", padding: 5, ':hover': {boxShadow: 20, }, margin: 5,
             }} 
@@ -147,12 +153,12 @@ function HomePage() {
           </CardContent>
         </Card>
         <Card 
-            sx={{ maxWidth: 400, backgroundColor: "transparent", padding: 5, ':hover': {boxShadow: 20, }}} 
-            onClick={handlePage1}
+            sx={{ maxWidth: 400, backgroundColor: "transparent", padding: 5, margin: 5, ':hover': {boxShadow: 20, }}} 
+            onClick={handlePage2}
           >
             <CardMedia
               component="img"
-              title="ditto"
+              title="slowpoke"
               height="200"
               width="200"
               image="https://assets.pokemon.com/assets/cms2/img/pokedex/full//079.png"
@@ -162,57 +168,12 @@ function HomePage() {
           </CardContent>
         </Card>
         <Card 
-            sx={{ maxWidth: 400, backgroundColor: "transparent", padding: 5, ':hover': {boxShadow: 20, }}} 
-            onClick={handlePage1}
+            sx={{ maxWidth: 400, backgroundColor: "transparent", padding: 5, margin: 5, ':hover': {boxShadow: 20, }}} 
+            onClick={handlePage3}
           >
             <CardMedia
               component="img"
-              title="ditto"
-              height="200"
-              width="200"
-              image="https://assets.pokemon.com/assets/cms2/img/pokedex/full//175.png"
-            />
-          <CardContent>
-            <Typography variant="h5" component="div" align='center' padding={0} paddingTop={1}> IRENKA </Typography>
-          </CardContent>
-        </Card>
-        <Card 
-            sx={{ maxWidth: 400, backgroundColor: "transparent", padding: 5, ':hover': {boxShadow: 20, }}} 
-            onClick={handlePage1}
-          >
-            <CardMedia
-              component="img"
-              title="ditto"
-              height="200"
-              width="200"
-              image="https://assets.pokemon.com/assets/cms2/img/pokedex/full//175.png"
-            />
-          <CardContent>
-            <Typography variant="h5" component="div" align='center' padding={0} paddingTop={1}> IRENKA </Typography>
-          </CardContent>
-        </Card>
-        <Card 
-            sx={{ maxWidth: 400, backgroundColor: "transparent", padding: 5, ':hover': {boxShadow: 20, }}} 
-            onClick={handlePage1}
-          >
-            <CardMedia
-              component="img"
-              title="ditto"
-              height="200"
-              width="200"
-              image="https://assets.pokemon.com/assets/cms2/img/pokedex/full//175.png"
-            />
-          <CardContent>
-            <Typography variant="h5" component="div" align='center' padding={0} paddingTop={1}> IRENKA </Typography>
-          </CardContent>
-        </Card>
-        <Card 
-            sx={{ maxWidth: 400, backgroundColor: "transparent", padding: 5, ':hover': {boxShadow: 20, }}} 
-            onClick={handlePage1}
-          >
-            <CardMedia
-              component="img"
-              title="ditto"
+              title="togepi"
               height="200"
               width="200"
               image="https://assets.pokemon.com/assets/cms2/img/pokedex/full//175.png"
@@ -227,3 +188,23 @@ function HomePage() {
 }
 
 export default HomePage;
+
+async function addPerson(
+  firstName: string, 
+  lastName: string, 
+  tt1: string, 
+  tt2: string, 
+  tt3: string, 
+  tt4: string, 
+  tt5: string, 
+) {
+  console.log(firstName)
+  console.log(lastName)
+  console.log(tt1)
+  console.log(tt2)
+  console.log(tt3)
+  console.log(tt4)
+  console.log(tt5)
+}
+
+export {addPerson};
