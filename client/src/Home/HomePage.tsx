@@ -5,6 +5,8 @@ import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { Typography, Grid, Paper } from '@mui/material';
 import styled, { createGlobalStyle } from 'styled-components';
 import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import CardMedia from '@mui/material/CardMedia';
 import { useAppDispatch, useAppSelector } from '../util/redux/hooks';
 import {
   logout as logoutAction,
@@ -37,16 +39,26 @@ const Button = styled.button`
   border-radius: 5px;
   border: 2px solid #335e9a;
   color: #ffffff;
-  margin: 0 1em;
-  padding: 0.25em 1em;
-  height: 3em;
+  margin: 0.2 2em;
+  padding: 0.5em 1em;
+  height: 4.5em;
   width: 12em;
   font-size: 1em;
+  line-height: 1.5em;
   font-family: 'Press Start 2P', system-ui;
   text-shadow: 3px, 2px, 1px, #d6d6d6;
   &:hover {
     background-color: #51648f;
   }
+`;
+
+const card = Card`
+  maxWidth: 400;
+  backgroundColor: "transparent"; 
+  padding: 5; 
+  ':hover': {boxShadow: 20, };
+  margin: 5;
+            
 `;
 
 const Footer = styled.footer`
@@ -96,10 +108,8 @@ function HomePage() {
         justifyContent="flex-end"
         alignItems="flex-start"
         padding={3}
-        // style={{ backgroundColor: COLORS.pokemonNavy }}
       >
         <Button>ADD TOXIC PERSON</Button>
-        {/* <Button onClick={handleLogout}>LOGOUT</Button> */}
       </Grid>
       <Grid
         item
@@ -119,37 +129,98 @@ function HomePage() {
           sx={{ height: '150px', width: 'auto' }}
         />
       </Grid>
-      <Grid item container justifyContent="space-around" padding={10} paddingBottom={20}>
-        <Button
-          onClick={handlePage1}
-          style={{
-            borderColor: 'transparent', backgroundColor: 'transparent', backgroundImage:
-              "url('https://archives.bulbagarden.net/media/upload/thumb/2/25/0132Ditto.png/250px-0132Ditto.png')",
-            backgroundSize: 'cover',
-            width: '250px',
-            height: '250px',
-          }}
-        />
-        <Button
-          onClick={handlePage2}
-          style={{
-            borderColor: 'transparent', backgroundColor: 'transparent', backgroundImage:
-              "url('https://assets.pokemon.com/assets/cms2/img/pokedex/full//079.png')",
-            backgroundSize: 'cover',
-            width: '250px',
-            height: '250px',
-          }}
-        />
-        <Button
-          onClick={handlePage3}
-          style={{
-            borderColor: 'transparent', backgroundColor: 'transparent', backgroundImage:
-              "url('https://assets.pokemon.com/assets/cms2/img/pokedex/full//175.png')",
-            backgroundSize: 'cover',
-            width: '250px',
-            height: '250px',
-          }}
-        />
+      <Grid item container justifyContent="center" alignContent="center" padding={10} paddingBottom={20} flexWrap="wrap">
+        <Card 
+            sx={{ maxWidth: 400, backgroundColor: "transparent", padding: 5, ':hover': {boxShadow: 20, }, margin: 5,
+            }} 
+            onClick={handlePage1}
+          >
+            <CardMedia
+              component="img"
+              title="ditto"
+              height="200"
+              width="200"
+              image="https://archives.bulbagarden.net/media/upload/thumb/2/25/0132Ditto.png/250px-0132Ditto.png"
+            />
+          <CardContent>
+            <Typography variant="h5" component="div" align='center' padding={0} paddingTop={1}> WILLARD </Typography>
+          </CardContent>
+        </Card>
+        <Card 
+            sx={{ maxWidth: 400, backgroundColor: "transparent", padding: 5, ':hover': {boxShadow: 20, }}} 
+            onClick={handlePage1}
+          >
+            <CardMedia
+              component="img"
+              title="ditto"
+              height="200"
+              width="200"
+              image="https://assets.pokemon.com/assets/cms2/img/pokedex/full//079.png"
+            />
+          <CardContent>
+            <Typography variant="h5" component="div" align='center' padding={0} paddingTop={1}> RACHEL </Typography>
+          </CardContent>
+        </Card>
+        <Card 
+            sx={{ maxWidth: 400, backgroundColor: "transparent", padding: 5, ':hover': {boxShadow: 20, }}} 
+            onClick={handlePage1}
+          >
+            <CardMedia
+              component="img"
+              title="ditto"
+              height="200"
+              width="200"
+              image="https://assets.pokemon.com/assets/cms2/img/pokedex/full//175.png"
+            />
+          <CardContent>
+            <Typography variant="h5" component="div" align='center' padding={0} paddingTop={1}> IRENKA </Typography>
+          </CardContent>
+        </Card>
+        <Card 
+            sx={{ maxWidth: 400, backgroundColor: "transparent", padding: 5, ':hover': {boxShadow: 20, }}} 
+            onClick={handlePage1}
+          >
+            <CardMedia
+              component="img"
+              title="ditto"
+              height="200"
+              width="200"
+              image="https://assets.pokemon.com/assets/cms2/img/pokedex/full//175.png"
+            />
+          <CardContent>
+            <Typography variant="h5" component="div" align='center' padding={0} paddingTop={1}> IRENKA </Typography>
+          </CardContent>
+        </Card>
+        <Card 
+            sx={{ maxWidth: 400, backgroundColor: "transparent", padding: 5, ':hover': {boxShadow: 20, }}} 
+            onClick={handlePage1}
+          >
+            <CardMedia
+              component="img"
+              title="ditto"
+              height="200"
+              width="200"
+              image="https://assets.pokemon.com/assets/cms2/img/pokedex/full//175.png"
+            />
+          <CardContent>
+            <Typography variant="h5" component="div" align='center' padding={0} paddingTop={1}> IRENKA </Typography>
+          </CardContent>
+        </Card>
+        <Card 
+            sx={{ maxWidth: 400, backgroundColor: "transparent", padding: 5, ':hover': {boxShadow: 20, }}} 
+            onClick={handlePage1}
+          >
+            <CardMedia
+              component="img"
+              title="ditto"
+              height="200"
+              width="200"
+              image="https://assets.pokemon.com/assets/cms2/img/pokedex/full//175.png"
+            />
+          <CardContent>
+            <Typography variant="h5" component="div" align='center' padding={0} paddingTop={1}> IRENKA </Typography>
+          </CardContent>
+        </Card>
       </Grid>
     </ScreenGrid>
   );

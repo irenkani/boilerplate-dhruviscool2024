@@ -46,7 +46,7 @@ function App() {
                     <Route path="/page2" element={<Page2 />} />
                     <Route path="/page3" element={<Page3 />} />
                     <Route path="/addtoxic" element={<AddToxic />} />
-                    <Route path="/login" element={<LoginPage />} />
+                    <Route path="/login" element={<HomePage />} />
                     <Route path="/register" element={<RegisterPage />} />
                     <Route
                       path="/verify-account/:token"
@@ -77,7 +77,7 @@ function App() {
                   <Route
                     path="/"
                     element={
-                      <DynamicRedirect unAuthPath="/login" authPath="/home" />
+                      <DynamicRedirect unAuthPath="/home" authPath="/home" />
                     }
                   />
 
