@@ -119,39 +119,10 @@ function HomePage() {
           sx={{ height: '150px', width: 'auto' }}
         />
       </Grid>
-      <Grid
-        item
-        container
-        justifyContent="space-around"
-        paddingTop={10}
-        paddingBottom={0}
-      >
-        {/* Ditto */}
-        <Box
-          component="img"
-          src="https://archives.bulbagarden.net/media/upload/thumb/2/25/0132Ditto.png/250px-0132Ditto.png"
-          alt="Ditto"
-          sx={{ height: '200px', width: 'auto' }}
-        />
-        {/* Slowpoke */}
-        <Box
-          component="img"
-          src="https://assets.pokemon.com/assets/cms2/img/pokedex/full//079.png"
-          alt="Slowpoke"
-          sx={{ height: '200px', width: 'auto' }}
-        />
-        {/* Togepi */}
-        <Box
-          component="img"
-          src="https://assets.pokemon.com/assets/cms2/img/pokedex/full//175.png"
-          alt="Togepi"
-          sx={{ height: '200px', width: 'auto' }}
-        />
-      </Grid>
-      <Grid item container justifyContent="space-around" paddingBottom={10}>
-        <Button onClick={handlePage1}>PAGE 1</Button>
-        <Button onClick={handlePage2}>PAGE 2</Button>
-        <Button onClick={handlePage3}>PAGE 3</Button>
+      <Grid item container justifyContent="space-around" padding={10}>
+        <Button onClick={handlePage1} style = {{backgroundImage:"url('https://archives.bulbagarden.net/media/upload/thumb/2/25/0132Ditto.png/250px-0132Ditto.png')",backgroundSize:"cover",width:"250px", height:"250px"}}></Button>
+        <Button onClick={handlePage2} style = {{backgroundImage:"url('https://assets.pokemon.com/assets/cms2/img/pokedex/full//079.png')",backgroundSize:"cover", width:"250px", height:"250px"}}></Button>
+        <Button onClick={handlePage3} style = {{backgroundImage:"url('https://assets.pokemon.com/assets/cms2/img/pokedex/full//175.png')",backgroundSize:"cover", width:"250px", height:"250px"}}></Button>
       </Grid>
     </ScreenGrid>
   );
