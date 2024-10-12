@@ -29,7 +29,6 @@ interface PromoteButtonProps {
  * The HomePage of the user dashboard. Displays a welcome message, a logout button and a button to promote the user to admin if they are not already an admin. If the user is an admin, the button will navigate them to the admin dashboard. This utilizes redux to access the current user's information.
  */
 
-<<<<<<< HEAD
 const GridExample = styled.div`
   display: grid;
   width: 100vw;
@@ -111,10 +110,6 @@ const Footer = styled.footer`
   grid-area: footer;
   padding: 0.25rem;
 `;
-=======
->>>>>>> CardConstant
-
-
 
 function Page2() {
   const user = useAppSelector(selectUser);
@@ -126,40 +121,13 @@ function Page2() {
   const location = useLocation();
   const { card } = location.state;
 
-
   const handleHomePage = async () => {
     navigator('/home', { replace: true });
   };
 
-
   return (
     <ScreenGrid>
-<<<<<<< HEAD
       <Grid
-        item
-        container
-        justifyContent="flex-end"
-        alignItems="flex-start"
-        paddingTop={5}
-        paddingRight={5}
-        paddingBottom={2}
-      >
-        <Button onClick={handleHomePage}>BACK TO HOME</Button>
-      </Grid>
-      {/* <Grid
-        item
-        container
-        justifyContent="center"
-        alignItems="center"
-        flexDirection="column"
-        padding={5}
-      >
-        <Typography variant="h1" alignContent="flex-start">
-          {message}
-        </Typography>
-      </Grid> */}
-=======
-       <Grid
         item
         container
         justifyContent="center"
@@ -173,7 +141,6 @@ function Page2() {
         </Typography>
       </Grid>
 
->>>>>>> CardConstant
       <Grid
         item
         container
@@ -183,35 +150,10 @@ function Page2() {
         paddingBottom={2}
         paddingTop={0}
       >
-<<<<<<< HEAD
         <Typography variant="h1" alignContent="flex-start">
           RACHEL
-=======
-        <Box
-          component="img"
-          src={card.imageURL}
-          alt={card.imageTitle}
-          sx={{ height: '150px', width: 'auto' }}
-        />
-      </Grid>
-
-      <Grid
-        item
-        container
-        justifyContent="center"
-        alignItems="center"
-        flexDirection="column"
-        paddingBottom={100}
-        paddingTop={10}
-      >
-        <Typography variant="h5" alignContent="flex-start">
-          "PAGE 2"
->>>>>>> CardConstant
         </Typography>
-      
       </Grid>
-<<<<<<< HEAD
-
 
       <Grid
         item
@@ -229,25 +171,21 @@ function Page2() {
         </Typography>
 
         <Typography variant="h5" alignContent="center">
-        - Has the attention span of a stereotypical goldfish
+          - Has the attention span of a stereotypical goldfish
         </Typography>
 
         <Typography variant="h5" alignContent="center">
-        - Loves gloomy/cloudy weather
+          - Loves gloomy/cloudy weather
         </Typography>
 
         <Typography variant="h5" alignContent="center">
-        - Incapable of roasting marshmallows without setting them on fire
+          - Incapable of roasting marshmallows without setting them on fire
         </Typography>
 
         <Typography variant="h5" alignContent="center">
-        - Puts peanut butter on everything
+          - Puts peanut butter on everything
         </Typography>
-      
       </Grid>
-        
-=======
->>>>>>> CardConstant
     </ScreenGrid>
   );
 }

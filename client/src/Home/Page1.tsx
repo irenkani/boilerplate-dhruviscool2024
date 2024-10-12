@@ -58,7 +58,6 @@ function Page1() {
   const location = useLocation();
   const { card } = location.state;
 
-
   const handleHomePage = async () => {
     navigator('/home', { replace: true });
   };
@@ -91,72 +90,34 @@ function Page1() {
         item
         container
         justifyContent="center"
-<<<<<<< HEAD
         alignItems="flex-start"
-=======
-        alignItems="center"
-        flexDirection="column"
-        paddingBottom={2}
-        paddingTop={0}
-      >
-        <Box
-          component="img"
-          src={card.imageURL}
-          alt={card.imageTitle}
-          sx={{ height: '150px', width: 'auto' }}
-        />
-      </Grid>
-
-      <Grid
-        item
-        container
-        justifyContent="center"
-        alignItems="center"
->>>>>>> CardConstant
         flexDirection="column"
         padding={20}
         paddingLeft={30}
         paddingBottom={100}
         paddingTop={10}
       >
-<<<<<<< HEAD
         <Typography variant="h5" alignContent="center">
-          - Prefers to brush teeth in the communal sink
-        </Typography>
-
-        <Typography variant="h5" alignContent="center">
-          - Orders fried rice at a ramen shop
-        </Typography>
-
-        <Typography variant="h5" alignContent="center">
-          - Sleeps a variable of 3-14 hours
-        </Typography>
-
-        <Typography variant="h5" alignContent="center">
-          - Unable to cry
-        </Typography>
-
-        <Typography variant="h5" alignContent="center">
-          - "I need to think about this"
-=======
-        <Typography variant="h5" alignContent="flex-start">
           {card.trait1}
         </Typography>
-        <Typography variant="h5" alignContent="flex-start">
+
+        <Typography variant="h5" alignContent="center">
           {card.trait2}
         </Typography>
-        <Typography variant="h5" alignContent="flex-start">
+
+        <Typography variant="h5" alignContent="center">
           {card.trait3}
         </Typography>
-        <Typography variant="h5" alignContent="flex-start">
+
+        <Typography variant="h5" alignContent="center">
           {card.trait4}
         </Typography>
-        <Typography variant="h5" alignContent="flex-start">
+
+        <Typography variant="h5" alignContent="center">
           {card.trait5}
->>>>>>> CardConstant
         </Typography>
       </Grid>
-  </ScreenGrid>
+    </ScreenGrid>
   );
 }
 

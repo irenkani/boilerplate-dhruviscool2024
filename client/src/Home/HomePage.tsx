@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 // import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
@@ -63,29 +63,43 @@ interface CardConstant {
   trait5: string;
 }
 
+let updatedCard: CardConstant;
+
 function HomePage() {
+  const user = useAppSelector(selectUser);
+  const dispatch = useAppDispatch();
+  const navigator = useNavigate();
+  const [admin, setAdmin] = useState(user.admin);
+  const logoutDispatch = () => dispatch(logoutAction());
+  const handleLogout = async () => {
+    if (await logoutApi()) {
+      logoutDispatch();
+      navigator('/login', { replace: true });
+    }
+  };
+
   const [cards, setCards] = useState<CardConstant[]>([
     {
       toxicPersonName: 'WILLARD',
       imageURL:
         'https://archives.bulbagarden.net/media/upload/thumb/2/25/0132Ditto.png/250px-0132Ditto.png',
       imageTitle: 'Ditto',
-      trait1: 'abc',
-      trait2: 'abc',
-      trait3: 'abc',
-      trait4: 'abc',
-      trait5: 'abc',
+      trait1: 'Prefers to brush teeth in the communal sink',
+      trait2: 'Orders fried rice at a ramen shop',
+      trait3: 'Sleeps a variable of 3-14 hours',
+      trait4: 'Unable to cry',
+      trait5: 'I need to think about this',
     },
     {
       toxicPersonName: 'RACHEL',
       imageURL:
         'https://assets.pokemon.com/assets/cms2/img/pokedex/full//079.png',
       imageTitle: 'Slowpoke',
-      trait1: 'abc',
-      trait2: 'abc',
-      trait3: 'abc',
-      trait4: 'abc',
-      trait5: 'abc',
+      trait1: 'Drinks coffee black',
+      trait2: 'Has the attention span of a stereotypical goldfish',
+      trait3: 'Loves gloomy/cloudy weather',
+      trait4: 'Incapable of roasting marshmallows without setting them on fire',
+      trait5: 'Puts peanut butter on everything',
     },
     {
       toxicPersonName: 'IRENKA',
@@ -100,42 +114,25 @@ function HomePage() {
     },
   ]);
 
-  const user = useAppSelector(selectUser);
-  const dispatch = useAppDispatch();
-  const navigator = useNavigate();
-  const [admin, setAdmin] = useState(user.admin);
-  const logoutDispatch = () => dispatch(logoutAction());
-  const handleLogout = async () => {
-    if (await logoutApi()) {
-      logoutDispatch();
-      navigator('/login', { replace: true });
-    }
-  };
-
   const handlePage1 = (card: CardConstant) => {
     navigator('/page1', { state: { card } });
   };
 
-  const handleAdd = async () => {
-    navigator('/addtoxic', { replace: true });
-  };
-
   const handleAddTrait = async () => {
-    const newCard: CardConstant = {
-      toxicPersonName: 'Test',
-      imageURL: 'newImage',
-      imageTitle: 'newImageTitle',
-      trait1: 'abc',
-      trait2: 'abc',
-      trait3: 'abc',
-      trait4: 'abc',
-      trait5: 'abc',
-    };
+    navigator('/addtoxic', { replace: true });
+    const newCard: CardConstant = updatedCard;
 
     setCards([...cards, newCard]);
   };
 
-const message = `CHOOSE YOUR`;
+  useEffect(() => {
+    const newCard = updatedCard; // or however you store the new card
+    if (newCard) {
+      setCards((prevCards) => [...prevCards, newCard]);
+    }
+  }, []);
+
+  const message = `CHOOSE YOUR`;
 
   return (
     <ScreenGrid>
@@ -217,22 +214,24 @@ const message = `CHOOSE YOUR`;
 
 export default HomePage;
 
-async function addPerson(
-  firstName: string, 
-  lastName: string, 
-  tt1: string, 
-  tt2: string, 
-  tt3: string, 
-  tt4: string, 
-  tt5: string, 
-) {
-  console.log(firstName)
-  console.log(lastName)
-  console.log(tt1)
-  console.log(tt2)
-  console.log(tt3)
-  console.log(tt4)
-  console.log(tt5)
-}
-
-export {addPerson};
+export const addPerson = (personData: {
+  firstName: string;
+  imageURL: string;
+  imageTitle: string;
+  toxictrait1: string;
+  toxictrait2: string;
+  toxictrait3: string;
+  toxictrait4: string;
+  toxictrait5: string;
+}) => {
+  updatedCard = {
+    toxicPersonName: personData.firstName,
+    imageURL: personData.imageURL,
+    imageTitle: personData.imageTitle,
+    trait1: personData.toxictrait1,
+    trait2: personData.toxictrait2,
+    trait3: personData.toxictrait3,
+    trait4: personData.toxictrait4,
+    trait5: personData.toxictrait5,
+  };
+};
