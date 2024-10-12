@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 // import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
-import { NavigateFunction, useNavigate } from 'react-router-dom';
+import { NavigateFunction, useNavigate, useLocation } from 'react-router-dom';
 import { Typography, Grid } from '@mui/material';
 import styled, { createGlobalStyle } from 'styled-components';
 import { useAppDispatch, useAppSelector } from '../util/redux/hooks';
@@ -29,6 +29,7 @@ interface PromoteButtonProps {
  * The HomePage of the user dashboard. Displays a welcome message, a logout button and a button to promote the user to admin if they are not already an admin. If the user is an admin, the button will navigate them to the admin dashboard. This utilizes redux to access the current user's information.
  */
 
+<<<<<<< HEAD
 const GridExample = styled.div`
   display: grid;
   width: 100vw;
@@ -110,6 +111,8 @@ const Footer = styled.footer`
   grid-area: footer;
   padding: 0.25rem;
 `;
+=======
+>>>>>>> CardConstant
 
 
 
@@ -119,22 +122,10 @@ function Page2() {
   const navigator = useNavigate();
   const [admin, setAdmin] = useState(user.admin);
   const logoutDispatch = () => dispatch(logoutAction());
-  const handleLogout = async () => {
-    if (await logoutApi()) {
-      logoutDispatch();
-      navigator('/login', { replace: true });
-    }
-  };
 
-  const handleAddTrait = async () => {
-    const newAdminStatus = await selfUpgrade(user.email as string);
-    if (newAdminStatus) {
-      dispatch(toggleAdmin());
-      setAdmin(true);
-    }
-  };
+  const location = useLocation();
+  const { card } = location.state;
 
-  const message = `Page 2`;
 
   const handleHomePage = async () => {
     navigator('/home', { replace: true });
@@ -143,6 +134,7 @@ function Page2() {
 
   return (
     <ScreenGrid>
+<<<<<<< HEAD
       <Grid
         item
         container
@@ -166,7 +158,8 @@ function Page2() {
           {message}
         </Typography>
       </Grid> */}
-      <Grid
+=======
+       <Grid
         item
         container
         justifyContent="center"
@@ -176,10 +169,48 @@ function Page2() {
         paddingTop={0}
       >
         <Typography variant="h1" alignContent="flex-start">
+          {card.toxicPersonName}
+        </Typography>
+      </Grid>
+
+>>>>>>> CardConstant
+      <Grid
+        item
+        container
+        justifyContent="center"
+        alignItems="center"
+        flexDirection="column"
+        paddingBottom={2}
+        paddingTop={0}
+      >
+<<<<<<< HEAD
+        <Typography variant="h1" alignContent="flex-start">
           RACHEL
+=======
+        <Box
+          component="img"
+          src={card.imageURL}
+          alt={card.imageTitle}
+          sx={{ height: '150px', width: 'auto' }}
+        />
+      </Grid>
+
+      <Grid
+        item
+        container
+        justifyContent="center"
+        alignItems="center"
+        flexDirection="column"
+        paddingBottom={100}
+        paddingTop={10}
+      >
+        <Typography variant="h5" alignContent="flex-start">
+          "PAGE 2"
+>>>>>>> CardConstant
         </Typography>
       
       </Grid>
+<<<<<<< HEAD
 
 
       <Grid
@@ -215,6 +246,8 @@ function Page2() {
       
       </Grid>
         
+=======
+>>>>>>> CardConstant
     </ScreenGrid>
   );
 }

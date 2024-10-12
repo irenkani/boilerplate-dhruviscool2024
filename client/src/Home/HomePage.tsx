@@ -52,28 +52,54 @@ const Button = styled.button`
   }
 `;
 
-// const card = Card`
-//   maxWidth: 400;
-//   backgroundColor: "transparent"; 
-//   padding: 5; 
-//   ':hover': {boxShadow: 20, };
-//   margin: 5;
-// const card = Card`
-//   maxWidth: 400;
-//   backgroundColor: "transparent"; 
-//   padding: 5; 
-//   ':hover': {boxShadow: 20, };
-//   margin: 5;
-            
-// `;
-
-const Footer = styled.footer`
-  background: #ff9637;
-  grid-area: footer;
-  padding: 0.25rem;
-`;
+interface CardConstant {
+  toxicPersonName: string;
+  imageURL: string;
+  imageTitle: string;
+  trait1: string;
+  trait2: string;
+  trait3: string;
+  trait4: string;
+  trait5: string;
+}
 
 function HomePage() {
+  const [cards, setCards] = useState<CardConstant[]>([
+    {
+      toxicPersonName: 'WILLARD',
+      imageURL:
+        'https://archives.bulbagarden.net/media/upload/thumb/2/25/0132Ditto.png/250px-0132Ditto.png',
+      imageTitle: 'Ditto',
+      trait1: 'abc',
+      trait2: 'abc',
+      trait3: 'abc',
+      trait4: 'abc',
+      trait5: 'abc',
+    },
+    {
+      toxicPersonName: 'RACHEL',
+      imageURL:
+        'https://assets.pokemon.com/assets/cms2/img/pokedex/full//079.png',
+      imageTitle: 'Slowpoke',
+      trait1: 'abc',
+      trait2: 'abc',
+      trait3: 'abc',
+      trait4: 'abc',
+      trait5: 'abc',
+    },
+    {
+      toxicPersonName: 'IRENKA',
+      imageURL:
+        'https://assets.pokemon.com/assets/cms2/img/pokedex/full//175.png',
+      imageTitle: 'Togepi',
+      trait1: 'abc',
+      trait2: 'abc',
+      trait3: 'abc',
+      trait4: 'abc',
+      trait5: 'abc',
+    },
+  ]);
+
   const user = useAppSelector(selectUser);
   const dispatch = useAppDispatch();
   const navigator = useNavigate();
@@ -86,14 +112,8 @@ function HomePage() {
     }
   };
 
-  const handlePage1 = async () => {
-    navigator('/page1', { replace: true });
-  };
-  const handlePage2 = async () => {
-    navigator('/page2', { replace: true });
-  };
-  const handlePage3 = async () => {
-    navigator('/page3', { replace: true });
+  const handlePage1 = (card: CardConstant) => {
+    navigator('/page1', { state: { card } });
   };
 
   const handleAdd = async () => {
@@ -101,11 +121,18 @@ function HomePage() {
   };
 
   const handleAddTrait = async () => {
-    const newAdminStatus = await selfUpgrade(user.email as string);
-    if (newAdminStatus) {
-      dispatch(toggleAdmin());
-      setAdmin(true);
-    }
+    const newCard: CardConstant = {
+      toxicPersonName: 'Test',
+      imageURL: 'newImage',
+      imageTitle: 'newImageTitle',
+      trait1: 'abc',
+      trait2: 'abc',
+      trait3: 'abc',
+      trait4: 'abc',
+      trait5: 'abc',
+    };
+
+    setCards([...cards, newCard]);
   };
 
 const message = `CHOOSE YOUR`;
@@ -121,7 +148,7 @@ const message = `CHOOSE YOUR`;
         paddingRight={5}
         paddingBottom={0}
       >
-        <Button onClick={handleAdd}>ADD TOXIC PERSON</Button>
+        <Button onClick={handleAddTrait}> ADD TOXIC PERSON</Button>
       </Grid>
       <Grid
         item
@@ -141,80 +168,48 @@ const message = `CHOOSE YOUR`;
           sx={{ height: '150px', width: 'auto' }}
         />
       </Grid>
-      <Grid item container justifyContent="center" alignContent="center" padding={6} paddingBottom={20} flexWrap="wrap">
-        <Card 
-            sx={{ maxWidth: 400, backgroundColor: "transparent", padding: 5, ':hover': {boxShadow: 20, }, margin: 5,
-            }} 
-            onClick={handlePage1}
+      <Grid
+        item
+        container
+        justifyContent="center"
+        alignContent="center"
+        padding={10}
+        paddingBottom={20}
+        flexWrap="wrap"
+      >
+        {cards.map((card, index) => (
+          <Card
+            // eslint-disable-next-line react/no-array-index-key
+            key={index}
+            sx={{
+              maxWidth: 400,
+              backgroundColor: 'transparent',
+              padding: 5,
+              ':hover': { boxShadow: 20 },
+              margin: 5,
+            }}
+            onClick={() => handlePage1(card)}
           >
             <CardMedia
               component="img"
-              title="ditto"
+              title={card.imageTitle}
               height="200"
               width="200"
-              image="https://archives.bulbagarden.net/media/upload/thumb/2/25/0132Ditto.png/250px-0132Ditto.png"
+              image={card.imageURL}
             />
-          <CardContent>
-            <Typography
-              variant="h5"
-              component="div"
-              align="center"
-              padding={0}
-              paddingTop={1}
-            >
-              {' '}
-              WILLARD{' '}
-            </Typography>
-          </CardContent>
-        </Card>
-        <Card 
-            sx={{ maxWidth: 400, backgroundColor: "transparent", padding: 5, margin: 5, ':hover': {boxShadow: 20, }}} 
-            onClick={handlePage2}
-          >
-            <CardMedia
-              component="img"
-              title="slowpoke"
-              height="200"
-              width="200"
-              image="https://assets.pokemon.com/assets/cms2/img/pokedex/full//079.png"
-            />
-          <CardContent>
-            <Typography
-              variant="h5"
-              component="div"
-              align="center"
-              padding={0}
-              paddingTop={1}
-            >
-              {' '}
-              RACHEL{' '}
-            </Typography>
-          </CardContent>
-        </Card>
-        <Card 
-            sx={{ maxWidth: 400, backgroundColor: "transparent", padding: 5, margin: 5, ':hover': {boxShadow: 20, }}} 
-            onClick={handlePage3}
-          >
-            <CardMedia
-              component="img"
-              title="togepi"
-              height="200"
-              width="200"
-              image="https://assets.pokemon.com/assets/cms2/img/pokedex/full//175.png"
-            />
-          <CardContent>
-            <Typography
-              variant="h5"
-              component="div"
-              align="center"
-              padding={0}
-              paddingTop={1}
-            >
-              {' '}
-              IRENKA{' '}
-            </Typography>
-          </CardContent>
-        </Card>
+            <CardContent>
+              <Typography
+                variant="h5"
+                component="div"
+                align="center"
+                padding={0}
+                paddingTop={1}
+              >
+                {card.toxicPersonName}
+              </Typography>
+            </CardContent>
+          </Card>
+        ))}
       </Grid>
     </ScreenGrid>
   );

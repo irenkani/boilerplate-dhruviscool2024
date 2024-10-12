@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 // import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
-import { NavigateFunction, useNavigate } from 'react-router-dom';
-import { Typography, Grid, Paper, } from '@mui/material';
+import { NavigateFunction, useNavigate, useLocation } from 'react-router-dom';
+import { Typography, Grid, Paper } from '@mui/material';
 import styled, { createGlobalStyle } from 'styled-components';
+import CardContent from '@mui/material/CardContent';
+import Card from '@mui/material/Card';
+import CardMedia from '@mui/material/CardMedia';
 import { useAppDispatch, useAppSelector } from '../util/redux/hooks';
 import {
   logout as logoutAction,
@@ -12,11 +15,7 @@ import {
 } from '../util/redux/userSlice';
 import { logout as logoutApi, selfUpgrade } from './api';
 import ScreenGrid from '../components/ScreenGrid';
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import CardMedia from '@mui/material/CardMedia';
 import '../index.css';
-
 
 interface PromoteButtonProps {
   admin: boolean | null;
@@ -42,7 +41,7 @@ const Button = styled.button`
   margin: 0.2 2em;
   padding: 0.5em 1em;
   height: 4.5em;
-  width: 12em;
+  width: 11em;
   font-size: 1em;
   line-height: 1.5em;
   font-family: 'Press Start 2P', system-ui;
@@ -52,16 +51,17 @@ const Button = styled.button`
   }
 `;
 
-
 function Page1() {
   const message = `Page 1`;
   const navigator = useNavigate();
-  
+
+  const location = useLocation();
+  const { card } = location.state;
+
 
   const handleHomePage = async () => {
     navigator('/home', { replace: true });
   };
-
 
   return (
     <ScreenGrid>
@@ -70,24 +70,10 @@ function Page1() {
         container
         justifyContent="flex-end"
         alignItems="flex-start"
-        paddingTop={5}
-        paddingRight={5}
-        paddingBottom={2}
+        padding={3}
       >
-        <Button onClick={handleHomePage}>BACK TO HOME</Button>
+        <Button onClick={handleHomePage}>GO BACK HOME</Button>
       </Grid>
-      {/* <Grid
-        item
-        container
-        justifyContent="center"
-        alignItems="center"
-        flexDirection="column"
-        padding={5}
-      >
-        <Typography variant="h1" alignContent="flex-start">
-          {message}
-        </Typography>
-      </Grid> */}
       <Grid
         item
         container
@@ -98,22 +84,42 @@ function Page1() {
         paddingTop={0}
       >
         <Typography variant="h1" alignContent="flex-start">
-          WILLARD
+          {card.toxicPersonName}
         </Typography>
-      
+      </Grid>
+      <Grid
+        item
+        container
+        justifyContent="center"
+<<<<<<< HEAD
+        alignItems="flex-start"
+=======
+        alignItems="center"
+        flexDirection="column"
+        paddingBottom={2}
+        paddingTop={0}
+      >
+        <Box
+          component="img"
+          src={card.imageURL}
+          alt={card.imageTitle}
+          sx={{ height: '150px', width: 'auto' }}
+        />
       </Grid>
 
       <Grid
         item
         container
         justifyContent="center"
-        alignItems="flex-start"
+        alignItems="center"
+>>>>>>> CardConstant
         flexDirection="column"
         padding={20}
         paddingLeft={30}
         paddingBottom={100}
         paddingTop={10}
       >
+<<<<<<< HEAD
         <Typography variant="h5" alignContent="center">
           - Prefers to brush teeth in the communal sink
         </Typography>
@@ -132,11 +138,25 @@ function Page1() {
 
         <Typography variant="h5" alignContent="center">
           - "I need to think about this"
+=======
+        <Typography variant="h5" alignContent="flex-start">
+          {card.trait1}
         </Typography>
-      
+        <Typography variant="h5" alignContent="flex-start">
+          {card.trait2}
+        </Typography>
+        <Typography variant="h5" alignContent="flex-start">
+          {card.trait3}
+        </Typography>
+        <Typography variant="h5" alignContent="flex-start">
+          {card.trait4}
+        </Typography>
+        <Typography variant="h5" alignContent="flex-start">
+          {card.trait5}
+>>>>>>> CardConstant
+        </Typography>
       </Grid>
-        
-    </ScreenGrid>
+  </ScreenGrid>
   );
 }
 
