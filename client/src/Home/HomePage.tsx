@@ -106,11 +106,22 @@ function HomePage() {
       imageURL:
         'https://assets.pokemon.com/assets/cms2/img/pokedex/full//175.png',
       imageTitle: 'Togepi',
-      trait1: 'abc',
+      trait1: 'CSA Freshman rep',
       trait2: 'abc',
       trait3: 'abc',
       trait4: 'abc',
       trait5: 'abc',
+    },
+    {
+      toxicPersonName: 'DHRUV',
+      imageURL:
+        'https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/065.png',
+      imageTitle: 'Alakazam',
+      trait1: 'Incredibly funny',
+      trait2: 'alcoholic',
+      trait3: 'alcoholic',
+      trait4: 'Thinks he is incredibly funny',
+      trait5: 'Hair flies in the wind',
     },
   ]);
 
