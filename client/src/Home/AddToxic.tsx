@@ -34,6 +34,65 @@ function AddToxic() {
     navigator('/home', { replace: true });
   };
 
+  const saveToxicPersonToDB = async (personData: {
+    firstName: string;
+    imageURL: string;
+    imageTitle: string;
+    toxictrait1: string;
+    toxictrait2: string;
+    toxictrait3: string;
+    toxictrait4: string;
+    toxictrait5: string;
+  }) => {
+    try {
+      const response = await fetch('/api/toxicPersons', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          firstName: personData.firstName,
+          imageURL: personData.imageURL,
+          imageTitle: personData.imageTitle,
+          toxictrait1: personData.toxictrait1,
+          toxictrait2: personData.toxictrait2,
+          toxictrait3: personData.toxictrait3,
+          toxictrait4: personData.toxictrait4,
+          toxictrait5: personData.toxictrait5,
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to save toxic person');
+      }
+    } catch (error) {
+      console.error('Error saving toxic person:', error);
+    }
+  };
+
+  // const saveToxicPersonToDB = async (personData: {
+  //   firstName: string;
+  //   imageURL: string;
+  //   imageTitle: string;
+  //   toxictrait1: string;
+  //   toxictrait2: string;
+  //   toxictrait3: string;
+  //   toxictrait4: string;
+  //   toxictrait5: string;
+  // }) => {
+  //   const toxicPerson = new ToxicPerson({
+  //     firstName: personData.firstName,
+  //     imageURL: personData.imageURL,
+  //     imageTitle: personData.imageTitle,
+  //     trait1: personData.toxictrait1,
+  //     trait2: personData.toxictrait2,
+  //     trait3: personData.toxictrait3,
+  //     trait4: personData.toxictrait4,
+  //     trait5: personData.toxictrait5,
+  //   });
+  //   await toxicPerson.save();
+  // };
+
   // eslint-disable-next-line @typescript-eslint/no-shadow
   const Button = styled.button`
     background: #4c9cc4;
@@ -233,11 +292,10 @@ function AddToxic() {
         paddingBottom={15}
       >
         <Button
-          onClick={() => {
+          onClick={async () => {
+            await saveToxicPersonToDB(values);
             addPerson(values);
-            setValueState(defaultValues); // Reset form values
-
-            // Navigate back to the HomePage
+            setValueState(defaultValues);
             navigator('/home', { replace: true });
           }}
         >

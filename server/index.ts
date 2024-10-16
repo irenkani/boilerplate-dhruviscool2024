@@ -1,3 +1,4 @@
+import toxicPersonsRouter from './src/routes/toxicPerson.route';
 import MongoConnection from './src/config/mongoConnection';
 import createExpressApp from './src/config/createExpressApp';
 import 'dotenv/config';
@@ -13,6 +14,7 @@ const main = async () => {
   // Instantiate express app with configured routes and middleware
   const app = createExpressApp(dbConnection.createSessionStore());
 
+  app.use('/api/toxicPersons', toxicPersonsRouter);
   // Instantiate a server to listen on a specified port
   app.listen(app.get('port'), () => {
     console.log(`Listening on port ${app.get('port')} 🚀`);

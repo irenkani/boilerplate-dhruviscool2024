@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { Typography, Grid, Paper } from '@mui/material';
-import styled, { createGlobalStyle } from 'styled-components';
+import styled from 'styled-components';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
@@ -125,6 +125,25 @@ function HomePage() {
     },
   ]);
 
+  const fetchToxicPersons = async () => {
+    const response = await fetch('/api/toxicPersons'); // Fetch from your API
+    const data = await response.json();
+
+    // Transform the data to match CardConstant structure
+    const transformedData: CardConstant[] = data.map((person: any) => ({
+      toxicPersonName: person.name,
+      imageURL: person.pokemonImage,
+      imageTitle: person.pokemonName,
+      trait1: person.toxicTrait1,
+      trait2: person.toxicTrait2,
+      trait3: person.toxicTrait3,
+      trait4: person.toxicTrait4,
+      trait5: person.toxicTrait5,
+    }));
+
+    setCards(transformedData); // Set the transformed data to cards
+  };
+
   const handlePage1 = (card: CardConstant) => {
     navigator('/page1', { state: { card } });
   };
@@ -137,10 +156,7 @@ function HomePage() {
   };
 
   useEffect(() => {
-    const newCard = updatedCard; // or however you store the new card
-    if (newCard) {
-      setCards((prevCards) => [...prevCards, newCard]);
-    }
+    fetchToxicPersons();
   }, []);
 
   const message = `CHOOSE YOUR`;
