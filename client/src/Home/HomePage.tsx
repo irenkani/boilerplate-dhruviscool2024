@@ -3,11 +3,12 @@ import React, { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import { NavigateFunction, useNavigate } from 'react-router-dom';
 import { Typography, Grid, Paper } from '@mui/material';
-import styled, { createGlobalStyle } from 'styled-components';
+import styled from 'styled-components';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { useAppDispatch, useAppSelector } from '../util/redux/hooks';
+import { useData } from '../util/api';
 import {
   logout as logoutAction,
   toggleAdmin,
@@ -107,13 +108,50 @@ function HomePage() {
       imageURL:
         'https://assets.pokemon.com/assets/cms2/img/pokedex/full//175.png',
       imageTitle: 'Togepi',
-      trait1: 'abc',
+      trait1: 'CSA Freshman rep',
       trait2: 'abc',
       trait3: 'abc',
       trait4: 'abc',
       trait5: 'abc',
     },
+    {
+      toxicPersonName: 'DHRUV',
+      imageURL:
+        'https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/065.png',
+      imageTitle: 'Alakazam',
+      trait1: 'Incredibly funny',
+      trait2: 'alcoholic',
+      trait3: 'alcoholic',
+      trait4: 'Thinks he is incredibly funny',
+      trait5: 'Hair flies in the wind',
+    },
   ]);
+
+  // const toxicData = useData('toxicPerson/');
+
+  // useEffect(() => {
+  //   const data = toxicData?.data || [];
+  //   console.log(data);
+  // });
+
+  // const fetchToxicPersons = async () => {
+  //   const response = await fetch('/api/toxicPersons'); // - look at
+  //   const data = await response.json();
+
+  //   // Transform the data to match CardConstant structure
+  //   const transformedData: CardConstant[] = data.map((person: any) => ({
+  //     toxicPersonName: person.name,
+  //     imageURL: person.pokemonImage,
+  //     imageTitle: person.pokemonName,
+  //     trait1: person.toxicTrait1,
+  //     trait2: person.toxicTrait2,
+  //     trait3: person.toxicTrait3,
+  //     trait4: person.toxicTrait4,
+  //     trait5: person.toxicTrait5,
+  //   }));
+
+  //   setCards(transformedData); // Set the transformed data to cards
+  // };
 
   const handlePage1 = (card: CardConstant) => {
     navigator('/page1', { state: { card } });
@@ -126,12 +164,9 @@ function HomePage() {
     setCards([...cards, newCard]);
   };
 
-  useEffect(() => {
-    const newCard = updatedCard; // or however you store the new card
-    if (newCard) {
-      setCards((prevCards) => [...prevCards, newCard]);
-    }
-  }, []);
+  // useEffect(() => {
+  //   fetchToxicPersons();
+  // }, []);
 
   const message = `CHOOSE YOUR`;
 
