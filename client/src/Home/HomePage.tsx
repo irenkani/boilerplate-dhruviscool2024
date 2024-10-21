@@ -8,6 +8,7 @@ import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import { useAppDispatch, useAppSelector } from '../util/redux/hooks';
+import { useData } from '../util/api';
 import {
   logout as logoutAction,
   toggleAdmin,
@@ -125,8 +126,15 @@ function HomePage() {
     },
   ]);
 
+  const toxicData = useData('toxicPerson/');
+
+  useEffect(() => {
+    const data = toxicData?.data || [];
+    console.log(data);
+  });
+
   const fetchToxicPersons = async () => {
-    const response = await fetch('/api/toxicPersons'); // Fetch from your API
+    const response = await fetch('/api/toxicPersons'); // Fetch from your API - look at 
     const data = await response.json();
 
     // Transform the data to match CardConstant structure
@@ -155,9 +163,9 @@ function HomePage() {
     setCards([...cards, newCard]);
   };
 
-  useEffect(() => {
-    fetchToxicPersons();
-  }, []);
+  // useEffect(() => {
+  //   fetchToxicPersons();
+  // }, []);
 
   const message = `CHOOSE YOUR`;
 
