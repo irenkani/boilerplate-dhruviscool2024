@@ -17,6 +17,7 @@ import { logout as logoutApi, selfUpgrade } from './api';
 import ScreenGrid from '../components/ScreenGrid';
 import '../index.css';
 import COLORS from '../assets/colors';
+import App from '../App';
 
 interface PromoteButtonProps {
   admin: boolean | null;

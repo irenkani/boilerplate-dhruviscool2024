@@ -20,5 +20,29 @@ async function selfUpgrade(email: string) {
   return true;
 }
 
+async function addP(
+  firstName: string,
+  imageURL: string,
+  imageTitle: string,
+  toxicTrait1: string,
+  toxicTrait2: string,
+  toxicTrait3: string,
+  toxicTrait4: string,
+  toxicTrait5: string,
+) {
+  console.log(imageTitle);
+  console.log(firstName);
+  await postData('person/add-person', {
+    firstName,
+    imageURL,
+    imageTitle,
+    toxicTrait1,
+    toxicTrait2,
+    toxicTrait3,
+    toxicTrait4,
+    toxicTrait5,
+  });
+}
+
 // eslint-disable-next-line import/prefer-default-export
-export { logout, selfUpgrade };
+export { logout, selfUpgrade, addP };

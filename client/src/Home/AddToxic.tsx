@@ -7,8 +7,11 @@ import { NavigateFunction, useNavigate } from 'react-router-dom';
 import styled, { createGlobalStyle } from 'styled-components';
 import ScreenGrid from '../components/ScreenGrid';
 import { addPerson } from './HomePage';
+import { addP } from './api'
+import mongoose from 'mongoose';
 
 function AddToxic() {
+  
   const defaultValues = {
     firstName: '',
     imageURL: '',
@@ -235,6 +238,16 @@ function AddToxic() {
         <Button
           onClick={() => {
             addPerson(values);
+            addP(
+              values.firstName, 
+              values.imageURL, 
+              values.imageTitle, 
+              values.toxictrait1, 
+              values.toxictrait2, 
+              values.toxictrait3, 
+              values.toxictrait4, 
+              values.toxictrait5
+            );
             setValueState(defaultValues); // Reset form values
 
             // Navigate back to the HomePage

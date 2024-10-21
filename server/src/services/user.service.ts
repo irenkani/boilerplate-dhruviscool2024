@@ -3,6 +3,9 @@
  */
 import { hash } from 'bcrypt';
 import { User } from '../models/user.model';
+import { Person } from '../models/person.model';
+
+const mongoose = require('mongoose');
 
 const passwordHashSaltRounds = 10;
 const removeSensitiveDataQuery = [

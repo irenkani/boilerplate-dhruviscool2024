@@ -7,6 +7,7 @@ import passport from 'passport';
 import crypto from 'crypto';
 import { hash } from 'bcrypt';
 import { IUser } from '../models/user.model';
+import { IPerson } from "../models/person.model";
 import StatusCode from '../util/statusCode';
 import {
   passwordHashSaltRounds,
@@ -102,6 +103,7 @@ const logout = async (
 /**
  * A controller function to register a user in the database.
  */
+
 const register = async (
   req: express.Request,
   res: express.Response,
