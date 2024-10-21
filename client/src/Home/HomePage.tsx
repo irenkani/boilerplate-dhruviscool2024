@@ -126,31 +126,31 @@ function HomePage() {
     },
   ]);
 
-  const toxicData = useData('toxicPerson/');
+  // const toxicData = useData('toxicPerson/');
 
-  useEffect(() => {
-    const data = toxicData?.data || [];
-    console.log(data);
-  });
+  // useEffect(() => {
+  //   const data = toxicData?.data || [];
+  //   console.log(data);
+  // });
 
-  const fetchToxicPersons = async () => {
-    const response = await fetch('/api/toxicPersons'); // Fetch from your API - look at 
-    const data = await response.json();
+  // const fetchToxicPersons = async () => {
+  //   const response = await fetch('/api/toxicPersons'); // - look at
+  //   const data = await response.json();
 
-    // Transform the data to match CardConstant structure
-    const transformedData: CardConstant[] = data.map((person: any) => ({
-      toxicPersonName: person.name,
-      imageURL: person.pokemonImage,
-      imageTitle: person.pokemonName,
-      trait1: person.toxicTrait1,
-      trait2: person.toxicTrait2,
-      trait3: person.toxicTrait3,
-      trait4: person.toxicTrait4,
-      trait5: person.toxicTrait5,
-    }));
+  //   // Transform the data to match CardConstant structure
+  //   const transformedData: CardConstant[] = data.map((person: any) => ({
+  //     toxicPersonName: person.name,
+  //     imageURL: person.pokemonImage,
+  //     imageTitle: person.pokemonName,
+  //     trait1: person.toxicTrait1,
+  //     trait2: person.toxicTrait2,
+  //     trait3: person.toxicTrait3,
+  //     trait4: person.toxicTrait4,
+  //     trait5: person.toxicTrait5,
+  //   }));
 
-    setCards(transformedData); // Set the transformed data to cards
-  };
+  //   setCards(transformedData); // Set the transformed data to cards
+  // };
 
   const handlePage1 = (card: CardConstant) => {
     navigator('/page1', { state: { card } });
