@@ -10,6 +10,7 @@ import { Router } from 'express';
 import adminRouter from './admin.route';
 import authRouter from './auth.route';
 import personRouter from './person.route';
+import ToxicPersonRouter from './toxicPerson.route';
 
 const prefixToRouterMap: { prefix: string; router: Router }[] = [
   {
@@ -22,8 +23,12 @@ const prefixToRouterMap: { prefix: string; router: Router }[] = [
   },
   {
     prefix: '/api/person',
-    router: personRouter
-  }
+    router: personRouter,
+  },
+  {
+    prefix: '/api/ToxicPerson',
+    router: ToxicPersonRouter,
+  },
 ];
 
 export default prefixToRouterMap;

@@ -101,7 +101,7 @@ function HomePage() {
       trait2: 'Has the attention span of a stereotypical goldfish',
       trait3: 'Loves gloomy/cloudy weather',
       trait4: 'Incapable of roasting marshmallows without setting them on fire',
-      trait5: 'Puts peanut butter on everything',
+      trait5: 'Favorite pasttime is complaining',
     },
     {
       toxicPersonName: 'IRENKA',
@@ -163,6 +163,7 @@ function HomePage() {
 
     setCards([...cards, newCard]);
   };
+
 
   // useEffect(() => {
   //   fetchToxicPersons();
