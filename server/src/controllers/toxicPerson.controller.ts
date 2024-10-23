@@ -1,5 +1,4 @@
 import express from 'express';
-import { ToxicPerson } from '../models/toxicPerson.model';
 import { createToxicPersonRequest } from '../services/toxicPerson.service';
 import ApiError from '../util/apiError';
 

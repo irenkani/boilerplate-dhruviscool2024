@@ -83,7 +83,7 @@ function Page1() {
         paddingTop={0}
       >
         <Typography variant="h1" alignContent="flex-start">
-          {card.toxicPersonName}
+          {card.name}
         </Typography>
       </Grid>
       <Grid

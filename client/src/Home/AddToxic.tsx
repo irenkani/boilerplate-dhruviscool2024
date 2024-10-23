@@ -7,20 +7,18 @@ import { NavigateFunction, useNavigate } from 'react-router-dom';
 import styled, { createGlobalStyle } from 'styled-components';
 import ScreenGrid from '../components/ScreenGrid';
 import { addPerson } from './HomePage';
-import { addP } from './api'
-import mongoose from 'mongoose';
+import { addP } from './api';
 
 function AddToxic() {
-  
   const defaultValues = {
-    firstName: '',
+    name: '',
     imageURL: '',
     imageTitle: '',
-    toxictrait1: '',
-    toxictrait2: '',
-    toxictrait3: '',
-    toxictrait4: '',
-    toxictrait5: '',
+    trait1: '',
+    trait2: '',
+    trait3: '',
+    trait4: '',
+    trait5: '',
   };
 
   const [values, setValueState] = useState(defaultValues);
@@ -36,65 +34,6 @@ function AddToxic() {
   const handleHomePage = async () => {
     navigator('/home', { replace: true });
   };
-
-  const saveToxicPersonToDB = async (personData: {
-    firstName: string;
-    imageURL: string;
-    imageTitle: string;
-    toxictrait1: string;
-    toxictrait2: string;
-    toxictrait3: string;
-    toxictrait4: string;
-    toxictrait5: string;
-  }) => {
-    try {
-      const response = await fetch('/api/toxicPersons', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          firstName: personData.firstName,
-          imageURL: personData.imageURL,
-          imageTitle: personData.imageTitle,
-          toxictrait1: personData.toxictrait1,
-          toxictrait2: personData.toxictrait2,
-          toxictrait3: personData.toxictrait3,
-          toxictrait4: personData.toxictrait4,
-          toxictrait5: personData.toxictrait5,
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to save toxic person');
-      }
-    } catch (error) {
-      console.error('Error saving toxic person:', error);
-    }
-  };
-
-  // const saveToxicPersonToDB = async (personData: {
-  //   firstName: string;
-  //   imageURL: string;
-  //   imageTitle: string;
-  //   toxictrait1: string;
-  //   toxictrait2: string;
-  //   toxictrait3: string;
-  //   toxictrait4: string;
-  //   toxictrait5: string;
-  // }) => {
-  //   const toxicPerson = new ToxicPerson({
-  //     firstName: personData.firstName,
-  //     imageURL: personData.imageURL,
-  //     imageTitle: personData.imageTitle,
-  //     trait1: personData.toxictrait1,
-  //     trait2: personData.toxictrait2,
-  //     trait3: personData.toxictrait3,
-  //     trait4: personData.toxictrait4,
-  //     trait5: personData.toxictrait5,
-  //   });
-  //   await toxicPerson.save();
-  // };
 
   // eslint-disable-next-line @typescript-eslint/no-shadow
   const Button = styled.button`
@@ -151,11 +90,11 @@ function AddToxic() {
         padding={5}
       >
         <TextField
-          value={values.firstName}
+          value={values.name}
           variant="outlined"
           required
           label="First Name"
-          onChange={(e) => setValue('firstName', e.target.value)}
+          onChange={(e) => setValue('name', e.target.value)}
           style={{ width: 500 }}
         />
       </Grid>
@@ -205,11 +144,11 @@ function AddToxic() {
         paddingBottom={5}
       >
         <TextField
-          value={values.toxictrait1}
+          value={values.trait1}
           variant="outlined"
           required
           label="Toxic Trait 1"
-          onChange={(e) => setValue('toxictrait1', e.target.value)}
+          onChange={(e) => setValue('trait1', e.target.value)}
           style={{ width: 500 }}
         />
       </Grid>
@@ -223,11 +162,11 @@ function AddToxic() {
         paddingBottom={5}
       >
         <TextField
-          value={values.toxictrait2}
+          value={values.trait2}
           variant="outlined"
           required
           label="Toxic Trait 2"
-          onChange={(e) => setValue('toxictrait2', e.target.value)}
+          onChange={(e) => setValue('trait2', e.target.value)}
           style={{ width: 500 }}
         />
       </Grid>
@@ -241,11 +180,11 @@ function AddToxic() {
         paddingBottom={5}
       >
         <TextField
-          value={values.toxictrait3}
+          value={values.trait3}
           variant="outlined"
           required
           label="Toxic Trait 3"
-          onChange={(e) => setValue('toxictrait3', e.target.value)}
+          onChange={(e) => setValue('trait3', e.target.value)}
           style={{ width: 500 }}
         />
       </Grid>
@@ -259,11 +198,11 @@ function AddToxic() {
         paddingBottom={5}
       >
         <TextField
-          value={values.toxictrait4}
+          value={values.trait4}
           variant="outlined"
           required
           label="Toxic Trait 4"
-          onChange={(e) => setValue('toxictrait4', e.target.value)}
+          onChange={(e) => setValue('trait4', e.target.value)}
           style={{ width: 500 }}
         />
       </Grid>
@@ -277,11 +216,11 @@ function AddToxic() {
         paddingBottom={5}
       >
         <TextField
-          value={values.toxictrait5}
+          value={values.trait5}
           variant="outlined"
           required
           label="Toxic Trait 5"
-          onChange={(e) => setValue('toxictrait5', e.target.value)}
+          onChange={(e) => setValue('trait5', e.target.value)}
           style={{ width: 500 }}
         />
       </Grid>
@@ -296,17 +235,15 @@ function AddToxic() {
       >
         <Button
           onClick={async () => {
-            await saveToxicPersonToDB(values);
-            addPerson(values);
             addP(
-              values.firstName, 
-              values.imageURL, 
-              values.imageTitle, 
-              values.toxictrait1, 
-              values.toxictrait2, 
-              values.toxictrait3, 
-              values.toxictrait4, 
-              values.toxictrait5
+              values.name,
+              values.imageURL,
+              values.imageTitle,
+              values.trait1,
+              values.trait2,
+              values.trait3,
+              values.trait4,
+              values.trait5,
             );
             setValueState(defaultValues); // Reset form values
 

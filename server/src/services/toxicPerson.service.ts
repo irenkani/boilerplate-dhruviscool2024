@@ -1,4 +1,3 @@
-import express from 'express';
 import { ToxicPerson } from '../models/toxicPerson.model';
 
 interface IToxicPersonParamsList {

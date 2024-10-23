@@ -1,4 +1,4 @@
-import { postData, putData } from '../util/api';
+import { postData, putData, getData } from '../util/api';
 
 /**
  * Makes a request to the server to logout a user from the current session
@@ -20,29 +20,63 @@ async function selfUpgrade(email: string) {
   return true;
 }
 
+interface personType {
+  name: string;
+  imageURL: string;
+  imageTitle: string;
+  trait1: string;
+  trait2: string;
+  trait3: string;
+  trait4: string;
+  trait5: string;
+}
+
+interface CardConstant {
+  name: string;
+  imageURL: string;
+  imageTitle: string;
+  trait1: string;
+  trait2: string;
+  trait3: string;
+  trait4: string;
+  trait5: string;
+}
+
 async function addP(
-  firstName: string,
+  name: string,
   imageURL: string,
   imageTitle: string,
-  toxicTrait1: string,
-  toxicTrait2: string,
-  toxicTrait3: string,
-  toxicTrait4: string,
-  toxicTrait5: string,
+  trait1: string,
+  trait2: string,
+  trait3: string,
+  trait4: string,
+  trait5: string,
 ) {
   console.log(imageTitle);
-  console.log(firstName);
+  console.log(name);
   await postData('person/add-person', {
-    firstName,
+    name,
     imageURL,
     imageTitle,
-    toxicTrait1,
-    toxicTrait2,
-    toxicTrait3,
-    toxicTrait4,
-    toxicTrait5,
+    trait1,
+    trait2,
+    trait3,
+    trait4,
+    trait5,
   });
+}
+async function getAllP(
+  cards: CardConstant[],
+  setCards: React.Dispatch<React.SetStateAction<CardConstant[]>>,
+) {
+  const response = await getData('person/all-people');
+  console.log('updated cards', response.data.data);
+  if (!response || !response.data.data) {
+    console.error('Unable to get all users');
+    return;
+  }
+  setCards([...cards, ...response.data.data]);
 }
 
 // eslint-disable-next-line import/prefer-default-export
-export { logout, selfUpgrade, addP };
+export { logout, selfUpgrade, addP, getAllP };

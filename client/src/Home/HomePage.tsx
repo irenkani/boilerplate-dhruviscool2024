@@ -14,11 +14,10 @@ import {
   toggleAdmin,
   selectUser,
 } from '../util/redux/userSlice';
-import { logout as logoutApi, selfUpgrade } from './api';
+import { logout as logoutApi, selfUpgrade, getAllP } from './api';
 import ScreenGrid from '../components/ScreenGrid';
 import '../index.css';
 import COLORS from '../assets/colors';
-import App from '../App';
 
 interface PromoteButtonProps {
   admin: boolean | null;
@@ -55,7 +54,7 @@ const Button = styled.button`
 `;
 
 interface CardConstant {
-  toxicPersonName: string;
+  name: string;
   imageURL: string;
   imageTitle: string;
   trait1: string;
@@ -82,7 +81,7 @@ function HomePage() {
 
   const [cards, setCards] = useState<CardConstant[]>([
     {
-      toxicPersonName: 'WILLARD',
+      name: 'WILLARD',
       imageURL:
         'https://archives.bulbagarden.net/media/upload/thumb/2/25/0132Ditto.png/250px-0132Ditto.png',
       imageTitle: 'Ditto',
@@ -93,7 +92,7 @@ function HomePage() {
       trait5: 'I need to think about this',
     },
     {
-      toxicPersonName: 'RACHEL',
+      name: 'RACHEL',
       imageURL:
         'https://assets.pokemon.com/assets/cms2/img/pokedex/full//079.png',
       imageTitle: 'Slowpoke',
@@ -104,7 +103,7 @@ function HomePage() {
       trait5: 'Favorite pasttime is complaining',
     },
     {
-      toxicPersonName: 'IRENKA',
+      name: 'IRENKA',
       imageURL:
         'https://assets.pokemon.com/assets/cms2/img/pokedex/full//175.png',
       imageTitle: 'Togepi',
@@ -115,7 +114,7 @@ function HomePage() {
       trait5: 'abc',
     },
     {
-      toxicPersonName: 'DHRUV',
+      name: 'DHRUV',
       imageURL:
         'https://www.pokemon.com/static-assets/content-assets/cms2/img/pokedex/full/065.png',
       imageTitle: 'Alakazam',
@@ -127,47 +126,24 @@ function HomePage() {
     },
   ]);
 
-  // const toxicData = useData('toxicPerson/');
-
-  // useEffect(() => {
-  //   const data = toxicData?.data || [];
-  //   console.log(data);
-  // });
-
-  // const fetchToxicPersons = async () => {
-  //   const response = await fetch('/api/toxicPersons'); // - look at
-  //   const data = await response.json();
-
-  //   // Transform the data to match CardConstant structure
-  //   const transformedData: CardConstant[] = data.map((person: any) => ({
-  //     toxicPersonName: person.name,
-  //     imageURL: person.pokemonImage,
-  //     imageTitle: person.pokemonName,
-  //     trait1: person.toxicTrait1,
-  //     trait2: person.toxicTrait2,
-  //     trait3: person.toxicTrait3,
-  //     trait4: person.toxicTrait4,
-  //     trait5: person.toxicTrait5,
-  //   }));
-
-  //   setCards(transformedData); // Set the transformed data to cards
-  // };
-
   const handlePage1 = (card: CardConstant) => {
     navigator('/page1', { state: { card } });
   };
 
   const handleAddTrait = async () => {
     navigator('/addtoxic', { replace: true });
-    const newCard: CardConstant = updatedCard;
-
-    setCards([...cards, newCard]);
   };
 
+  // Function to fetch all toxic people
+  const fetchToxicPeople = async () => {
+    await getAllP(cards, setCards);
+    console.log('Updated cards:', cards);
+  };
 
-  // useEffect(() => {
-  //   fetchToxicPersons();
-  // }, []);
+  useEffect(() => {
+    fetchToxicPeople();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const message = `CHOOSE YOUR`;
 
@@ -239,7 +215,7 @@ function HomePage() {
                 padding={0}
                 paddingTop={1}
               >
-                {card.toxicPersonName}
+                {card.name}
               </Typography>
             </CardContent>
           </Card>
@@ -252,23 +228,23 @@ function HomePage() {
 export default HomePage;
 
 export const addPerson = (personData: {
-  firstName: string;
+  name: string;
   imageURL: string;
   imageTitle: string;
-  toxictrait1: string;
-  toxictrait2: string;
-  toxictrait3: string;
-  toxictrait4: string;
-  toxictrait5: string;
+  trait1: string;
+  trait2: string;
+  trait3: string;
+  trait4: string;
+  trait5: string;
 }) => {
   updatedCard = {
-    toxicPersonName: personData.firstName,
+    name: personData.name,
     imageURL: personData.imageURL,
     imageTitle: personData.imageTitle,
-    trait1: personData.toxictrait1,
-    trait2: personData.toxictrait2,
-    trait3: personData.toxictrait3,
-    trait4: personData.toxictrait4,
-    trait5: personData.toxictrait5,
+    trait1: personData.trait1,
+    trait2: personData.trait2,
+    trait3: personData.trait3,
+    trait4: personData.trait4,
+    trait5: personData.trait5,
   };
 };

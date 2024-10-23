@@ -4,14 +4,15 @@
  */
 import express from 'express';
 import {
-  addPersonController
+  addPersonController,
+  getAllPeopleController,
 } from '../controllers/person.controller';
-import { isAuthenticated } from '../controllers/auth.middleware';
 import 'dotenv/config';
 
 const router = express.Router();
 
-
 router.post('/add-person', addPersonController);
 
-export default router
+router.get('/all-people', getAllPeopleController);
+
+export default router;
